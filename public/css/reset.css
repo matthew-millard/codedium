@@ -12,9 +12,12 @@ h2,
 h3,
 h4,
 p,
+ul,
+ol,
 figure,
 blockquote {
   margin: 0;
+  padding: 0;
 }
 
 /* Remove list styles on ul, ol elements */
@@ -22,6 +25,12 @@ ul,
 ol {
   list-style: none;
 }
+
+/* Link Styles */
+a {
+  text-decoration: none;
+}
+
 
 /* Set core body defaults */
 body {
