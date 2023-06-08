@@ -1,12 +1,16 @@
 // Imports
 const express = require('express');
 const sequelize = require('./config/connection');
+const routes = require('./controllers/index');
 
 // Port
 const PORT = process.env.PORT || 3001;
 
 // Create express application
 const app = express();
+
+// Routes
+app.use(routes);
 
 // Start server
 const startServer = async () => {
