@@ -10,6 +10,15 @@
   --dark-shade: #000000;
 }
 
+.page-container {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
 /* body */
 body {
   font-family: 'IBM Plex Mono', monospace;
@@ -22,6 +31,7 @@ h1 {
 }
 h2 {
   font-size: 3.2rem;
+  color: var(--font-color);
 }
 h3 {
   font-size: 2.8rem;
@@ -35,6 +45,20 @@ p {
 
 li {
   font-size: 2.8rem;
+  color: var(--font-color);
+}
+
+label {
+  font-size: 2rem;
+  color: var(--font-color);
+}
+
+input {
+  font-size: 2rem;
+}
+
+a:hover {
+  color: var(--primary-color);
 }
 
 a {
@@ -50,8 +74,11 @@ small {
   font-size: 1.4rem;
 }
 
-.page-container {
-  min-height: 100vh;
+/* Primary Button Styles */
+.primary-button {
+  font-size: 2rem;
+  padding: 0.3rem 1.4rem;
+  cursor: pointer;
 }
 
 .flex {
@@ -60,6 +87,10 @@ small {
 
 /* Navigation.handlebars */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--secondary-color);
 }
 
@@ -80,6 +111,50 @@ small {
   padding: 1rem 0rem;
 }
 
-.nav_links-container li:nth-child(-n + 2) {
+.nav_links-container li:nth-child(-n + 3) {
   margin-right: 2rem;
+}
+
+/* Login.handlebars */
+.login-sign-up-container {
+  flex-direction: column;
+}
+
+.login-container {
+  margin-bottom: 2rem;
+}
+
+.login-container,
+.sign-up-container {
+  background-color: var(--secondary-color);
+  padding: 2rem;
+}
+
+.login-container h2,
+.sign-up-container h2 {
+  padding-bottom: 1rem;
+}
+
+.form-login input[type='text'] {
+  margin-right: 1rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-button {
+  justify-content: center;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: var(--secondary-color);
+  justify-content: center;
+  align-items: center;
 }
