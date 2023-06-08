@@ -1,9 +1,13 @@
 // Imports
 const express = require('express');
 const sequelize = require('./config/connection');
+const session = require('express-session');
 const exphb = require('express-handlebars');
-const routes = require('./controllers/index');
+const routes = require('./controllers');
 const path = require('path');
+require('dotenv').config();
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Port
 const PORT = process.env.PORT || 3001;
@@ -13,6 +17,25 @@ const app = express();
 
 // Create instance of express handlebars engine
 const hbs = exphb.create({});
+
+const sess = {
+  secret: process.env.SESSION_SECRET, // This is the secret used to sign the session ID cookie
+  cookie: {
+    maxAge: 300000, // Max age in milliseconds until cookie expires
+    httpOnly: true, // The cookie will not be accessible through client side script
+    secure: false, // This indicates whether the cookie should be sent over secure connections only (HTTPS)
+    sameSite: 'strict', // This prevents the browser from sending this cookie along with cross-site requests
+  },
+  resave: false, // This forces the session to be saved back to the session store
+  saveUninitialized: true, // This forces a session that is "uninitialized" to be saved to the store
+  store: new SequelizeStore({
+    // This is a session store instance.
+    db: sequelize, // This is the Sequelize instance that will be used to connect to the database
+  }),
+};
+
+app.use(session(sess)); // The session middleware will populate req.session
+
 // Register the handlebars instance hbs as the view engine for files with the extension .handlebars
 app.engine('handlebars', hbs.engine);
 // Set handlebars to default view engine
@@ -31,7 +54,7 @@ app.use(routes);
 // Start server
 const startServer = async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     app.listen(PORT, () =>
       console.log(`Application listening on port:${PORT} 🚀`)
     );
