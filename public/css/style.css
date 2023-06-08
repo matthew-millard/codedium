@@ -1,0 +1,30 @@
+/* root */
+:root {
+  font-size: 62.5%; /* Now 1rem = 10px */
+}
+
+/* body */
+body {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Headings */
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+}
+h3 {
+  font-size: 2.8rem;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.6rem;
+}
+
+/* Smaller text */
+small {
+  font-size: 1.4rem;
+}
