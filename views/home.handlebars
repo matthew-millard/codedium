@@ -1,1 +1,7 @@
-<h1>Hello World!</h1>
+{{#each blogs}}
+  <div>
+    <h2>{{this.blog_title}}</h2>
+    <p>{{this.blog_body}}</p>
+    <p>By: {{this.User.username}}</p>
+  </div>
+{{/each}}
