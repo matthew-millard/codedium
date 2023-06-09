@@ -26,13 +26,14 @@ const hbs = exphb.create({
 const sess = {
   secret: process.env.SESSION_SECRET, // This is the secret used to sign the session ID cookie
   cookie: {
-    maxAge: 300000, // Max age in milliseconds until cookie expires
+    maxAge: 300000, // Max age in milliseconds until cookie expires, 5 minutes
     httpOnly: true, // The cookie will not be accessible through client side script
     secure: false, // This indicates whether the cookie should be sent over secure connections only (HTTPS)
     sameSite: 'strict', // This prevents the browser from sending this cookie along with cross-site requests
   },
   resave: false, // This forces the session to be saved back to the session store
   saveUninitialized: true, // This forces a session that is "uninitialized" to be saved to the store
+  rolling: true, // Resets the maxAge on every user response
   store: new SequelizeStore({
     // This is a session store instance.
     db: sequelize, // This is the Sequelize instance that will be used to connect to the database
