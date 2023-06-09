@@ -43,6 +43,11 @@ p {
   color: var(--font-color);
 }
 
+small {
+  font-size: 1.6rem;
+  color: var(--font-color);
+}
+
 li {
   font-size: 2.8rem;
   color: var(--font-color);
@@ -72,6 +77,10 @@ a:active {
 /* Smaller text */
 small {
   font-size: 1.4rem;
+}
+
+hr {
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 /* Primary Button Styles */
@@ -121,6 +130,27 @@ small {
 
 .nav_links-container li:nth-child(-n + 3) {
   margin-right: 2rem;
+}
+
+/* Homepage */
+.main {
+  margin-top: 200px;
+  height: 100%;
+  flex-direction: column;
+}
+
+.blog {
+  margin: 0 auto 4rem;
+  width: 50%;
+}
+
+.blog_title {
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.blog_author > :first-child {
+  margin-right: 1rem;
 }
 
 /* Login.handlebars */

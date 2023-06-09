@@ -5,6 +5,7 @@ const session = require('express-session');
 const exphb = require('express-handlebars');
 const routes = require('./controllers');
 const path = require('path');
+const formatDate = require('./helpers/formatDate');
 require('dotenv').config();
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -16,7 +17,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Create instance of express handlebars engine
-const hbs = exphb.create({});
+const hbs = exphb.create({
+  helpers: {
+    formatDate,
+  },
+});
 
 const sess = {
   secret: process.env.SESSION_SECRET, // This is the secret used to sign the session ID cookie
