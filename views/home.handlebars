@@ -1,7 +1,15 @@
-{{#each blogs}}
-  <div>
-    <h2>{{this.blog_title}}</h2>
-    <p>{{this.blog_body}}</p>
-    <p>By: {{this.User.username}}</p>
-  </div>
-{{/each}}
+<main class='main flex'>
+  {{#each blogs}}
+    <div class='blog'>
+      <div class='blog_title flex'>
+        <h2>{{this.blog_title}}</h2>
+        <div class='blog_author'>
+          <small>By: {{this.User.username}}</small>
+          <small>Posted: {{formatDate this.createdAt}}</small>
+        </div>
+      </div>
+      <hr />
+      <p>{{this.blog_body}}</p>
+    </div>
+  {{/each}}
+</main>
