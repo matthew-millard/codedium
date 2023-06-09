@@ -1,15 +1,17 @@
 <main class='main flex'>
   {{#each blogs}}
-    <div class='blog'>
-      <div class='blog_title flex'>
-        <h2>{{this.blog_title}}</h2>
-        <div class='blog_author'>
-          <small>By: {{this.User.username}}</small>
-          <small>Posted: {{formatDate this.createdAt}}</small>
+    <a href='/api/posts/{{this.id}}'>
+      <div class='blog'>
+        <div class='blog_title flex'>
+          <h2>{{this.blog_title}}</h2>
+          <div class='blog_author'>
+            <small>By: {{this.User.username}}</small>
+            <small>Posted: {{formatDate this.createdAt}}</small>
+          </div>
         </div>
+        <hr />
+        <p>{{this.blog_body}}</p>
       </div>
-      <hr />
-      <p>{{this.blog_body}}</p>
-    </div>
+    </a>
   {{/each}}
 </main>

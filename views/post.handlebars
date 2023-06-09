@@ -1,0 +1,25 @@
+<main class="main">
+  <div class='blog'>
+    <div class='blog_title flex'>
+      <h2>{{post.blog_title}}</h>
+      <div class='blog_author'>
+        <small>By: {{post.User.username}}</small>
+        <small>Posted: {{formatDate Posted.createdAt}}</small>
+      </div>
+    </div>
+    <p>{{post.blog_body}}</p>
+  </div>
+  
+  {{!-- <h2>Comments</h2>
+    {{#each comments}}
+      <div class='comment'>
+        <p>By: {{this.User.username}}</p>
+        <p>{{this.comment_body}}</p>
+      </div>
+    {{/each}} --}}
+  
+  <form class="comment-container flex">
+    <textarea name='comment_body' required></textarea>
+    <button class="primary-button" type='submit'>Leave Comment</button>
+  </form>
+</main>
