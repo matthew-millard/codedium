@@ -1,6 +1,7 @@
 // Imports
 const home = require('express').Router();
 const { BlogPost, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 home.get('/', async (req, res) => {
   try {
@@ -24,6 +25,16 @@ home.get('/', async (req, res) => {
 home.get('/login', async (req, res) => {
   try {
     return res.status(200).render('login');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+// Dashboard Route
+home.get('/dashboard', withAuth, (req, res) => {
+  try {
+    return res.status(200).render('dashboard');
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });
