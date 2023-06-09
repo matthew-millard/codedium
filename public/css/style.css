@@ -85,6 +85,14 @@ small {
   display: flex;
 }
 
+/* Show | Hide Elements */
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
 /* Navigation.handlebars */
 .header {
   position: fixed;

@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 
 class User extends Model {
   checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
+    // The checkPassword method allows you to check if the provided password matches the stored(hashed) password for a user
+    return bcrypt.compareSync(loginPw, this.password); // returns either true or false depending if they match
   }
 }
 
@@ -32,14 +33,18 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+        // refers to the password property on the newUserData object
+        newUserData.password = await bcrypt.hash(newUserData.password, 10); // 10 salt rounds for bcrypt
+        return newUserData; // the return is important, as it allows the new (updated) data to be inserted into the database
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
+        if (updatedUserData.changed('password')) {
+          // Checks if the user is changing the password, if so, the new password will be hashed
+          updatedUserData.password = await bcrypt.hash(
+            updatedUserData.password,
+            10
+          );
+        }
         return updatedUserData;
       },
     },
