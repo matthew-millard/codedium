@@ -1,9 +1,19 @@
 // Imports
 const home = require('express').Router();
+const { BlogPost, User } = require('../models');
 
 home.get('/', async (req, res) => {
   try {
-    return res.status(200).render('home');
+    // Get all blog posts
+    const blogPostData = await BlogPost.findAll({
+      include: [{ model: User }],
+    });
+
+    // Serialize data so the template can read it
+    const blogs = blogPostData.map((blog) => blog.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    return res.render('home', { blogs });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });
