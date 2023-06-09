@@ -14,7 +14,7 @@ home.get('/', async (req, res) => {
     const blogs = blogPostData.map((blog) => blog.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    return res.render('home', { blogs });
+    return res.render('home', { blogs, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });
@@ -24,7 +24,7 @@ home.get('/', async (req, res) => {
 // Login Route
 home.get('/login', async (req, res) => {
   try {
-    return res.status(200).render('login');
+    return res.status(200).render('login', { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });
@@ -34,7 +34,9 @@ home.get('/login', async (req, res) => {
 // Dashboard Route
 home.get('/dashboard', withAuth, (req, res) => {
   try {
-    return res.status(200).render('dashboard');
+    return res
+      .status(200)
+      .render('dashboard', { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });
