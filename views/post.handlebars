@@ -1,7 +1,11 @@
-<main class="main">
+<main class='main'>
+  <div class='post'>
+    <h3>Post</h3>
+    <hr />
+  </div>
   <div class='blog'>
     <div class='blog_title flex'>
-      <h2>{{post.blog_title}}</h>
+      <h2>{{post.blog_title}}</h2>
       <div class='blog_author'>
         <small>By: {{post.User.username}}</small>
         <small>Posted: {{formatDate Posted.createdAt}}</small>
@@ -9,19 +13,36 @@
     </div>
     <p>{{post.blog_body}}</p>
   </div>
-  
-  {{!-- <h2>Comments</h2>
-    {{#each comments}}
-      <div class='comment'>
-        <p>By: {{this.User.username}}</p>
-        <p>{{this.comment_body}}</p>
+
+  {{#if comments}}
+    <div class='prev-comments-container'>
+      <h3>Comments</h3>
+      <hr />
+      {{#each comments}}
+        <div class='prev-comments-content'>
+          <p>{{this.comment_body}}</p>
+          <small>Comment By: {{this.User.username}}</small>
+          <small>{{formatDate this.createdAt}}</small>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class='prev-comments-container'>
+      <h3>Comments</h3>
+      <hr />
+      <div class='prev-comments-content'>
+        <p>No comments yet!</p>
       </div>
-    {{/each}} --}}
-  
-  <form class="comment-container comment-form flex">
-    <textarea name='comment_body' required></textarea>
-    <button class="primary-button" type='submit'>Leave Comment</button>
+    </div>
+  {{/if}}
+
+  <form
+    class='comment-container comment-form flex'
+    data-id={{post.id}}
+  >
+    <textarea class='comment-textarea' name='comment_body' required></textarea>
+    <button class='primary-button' type='submit'>Leave Comment</button>
   </form>
 </main>
 
-<script src="./js/comments.js"></script>
+<script src='/js/comments.js'></script>
