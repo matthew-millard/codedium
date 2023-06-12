@@ -27,6 +27,8 @@ body {
 
 /* Headings */
 h1 {
+  position: relative;
+  font-weight: 300;
   font-size: 4.8rem;
 }
 h2 {
@@ -35,6 +37,7 @@ h2 {
 }
 h3 {
   font-size: 2.8rem;
+  color: var(--font-color);
 }
 
 /* Paragraphs & Lists */
@@ -105,22 +108,33 @@ hr {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--secondary-color);
+  /* background-color: var(--bg-color); */
 }
 
 .nav {
-  margin: 0 auto;
   width: 90%;
+  margin: 1rem auto 0;
 }
 
 #code {
-  color: var(--primary-color);
+  margin-left: 2.6rem;
+  color: var(--font-color);
 }
 
 #dium {
-  color: var(--dark-shade);
+  color: var(--font-color);
 }
 
+#greater-than {
+  position: absolute;
+  top: 2px;
+}
+
+#less-than {
+  position: absolute;
+  top: 3px;
+  left: 0;
+}
 .nav_links-container li {
   padding: 1rem 0rem;
 }
@@ -131,13 +145,17 @@ hr {
 
 /* Homepage */
 .main {
-  margin-top: 200px;
+  margin-top: 150px;
   height: 100%;
   flex-direction: column;
 }
+.post {
+  width: 50%;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
 .blog {
-  border: 2px solid var(--dark-shade);
   margin: 0 auto 4rem;
   padding: 2rem;
   width: 50%;
@@ -145,6 +163,7 @@ hr {
 
 .blog_title {
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: baseline;
 }
 
@@ -204,9 +223,25 @@ hr {
   width: 200px;
 }
 
+/* Previous Comments */
+
+.prev-comments-container {
+  margin: 0 auto;
+  width: 50%;
+  padding: 2rem;
+}
+
+.prev-comments-content {
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--dark-shade);
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+}
+
 /* Footer */
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;

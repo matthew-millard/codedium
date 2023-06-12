@@ -2,8 +2,10 @@
 
 const withAuth = (req, res, next) => {
   // Checks if the user is authenticated
-  if (!req.session.logged_in) {
-    res.redirect('/login');
+  if (!req.session.loggedIn) {
+    return res
+      .status(401)
+      .json({ message: 'You must be logged in to view this page' });
   } else {
     next();
   }
