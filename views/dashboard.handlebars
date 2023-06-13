@@ -3,15 +3,17 @@
     <h2 class='dashboard-title'>Your Blog Posts</h2>
     <hr />
     {{#each blogs}}
-      <div class='dashboard-blog-posts'>
-        <div class=''>
-          <h2>{{this.blog_title}}</h2>
-          <p>{{this.blog_body}}</p>
+      <a href='/api/posts/update/{{this.id}}'>
+        <div class='dashboard-blog-posts'>
           <div class=''>
-            <small>Posted: {{formatDate this.createdAt}}</small>
+            <h2>{{this.blog_title}}</h2>
+            <p>{{this.blog_body}}</p>
+            <div class=''>
+              <small>Posted: {{formatDate this.createdAt}}</small>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     {{/each}}
   {{else}}
     <h2 class='dashboard-title'>Your Blog Posts</h2>

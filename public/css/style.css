@@ -261,6 +261,39 @@ hr {
   border-radius: 100px;
 }
 
+.new-blog-form {
+  margin-top: 2rem;
+}
+
+.new-blog-title label {
+  margin-right: 1rem;
+}
+
+.new-blog-title input {
+  flex: 1 1 auto;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.new-blog-body {
+  margin-bottom: 2rem;
+}
+
+.new-blog-body label {
+  margin-right: 2.2rem;
+}
+
+.new-blog-body textarea {
+  flex: 1 1 auto;
+  padding-left: 1rem;
+  height: 20rem;
+}
+
+.update-blog-btns {
+  justify-content: center;
+  gap: 1rem;
+}
+
 /* Footer */
 .footer {
   position: absolute;
