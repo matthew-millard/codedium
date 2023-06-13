@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 // Create express application
 const app = express();
 
-// Create instance of express handlebars engine
+// Create instance of express handlebars engine with custom helpers
 const hbs = exphb.create({
   helpers: {
     formatDate,

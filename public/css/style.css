@@ -147,10 +147,11 @@ hr {
 .main {
   margin-top: 150px;
   height: 100%;
+  width: 50%;
   flex-direction: column;
 }
 .post {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -158,7 +159,7 @@ hr {
 .blog {
   margin: 0 auto 4rem;
   padding: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .blog_title {
@@ -205,11 +206,9 @@ hr {
 
 /* Blog Post Comment Section */
 .comment-container {
-  margin: 0 auto;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   padding: 2rem;
 }
 
@@ -227,7 +226,7 @@ hr {
 
 .prev-comments-container {
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
   padding: 2rem;
 }
 
