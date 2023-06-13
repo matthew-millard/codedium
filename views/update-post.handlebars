@@ -1,0 +1,25 @@
+<main class='main-dashboard'>
+
+  <h2 class='dashboard-title'>Update Blog Post</h2>
+  <hr />
+  <form class='new-blog-form' data-id={{post.id}}>
+    <div class='new-blog-title flex'>
+      <label for='blog_title'>Title: </label>
+      <input
+        type='text'
+        name='blog_title'
+        value='{{post.blog_title}}'
+        required
+      />
+    </div>
+    <div class='new-blog-body flex'>
+      <label for='blog_body'>Body: </label>
+      <textarea name='blog_body' required>{{post.blog_body}}</textarea>
+    </div>
+    <div class='update-blog-btns flex'>
+      <button class='primary-button' type='submit'>Update</button>
+      <button class='primary-button delete-btn' type='button'>Delete</button>
+    </div>
+  </form>
+</main>
+<script src='/js/update-blog.js'></script>
