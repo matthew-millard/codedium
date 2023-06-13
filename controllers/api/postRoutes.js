@@ -3,6 +3,44 @@ const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Create a new post page
+router.post('/new', withAuth, async (req, res) => {
+  try {
+    const { blog_title, blog_body } = req.body;
+
+    // Validate input
+    if (!blog_title || !blog_body) {
+      return res
+        .status(400)
+        .json({ message: 'Please enter a title and content' });
+    }
+
+    // Create a new blog post
+    const newBlogPost = await BlogPost.create({
+      blog_title,
+      blog_body,
+      author_id: req.session.user_id,
+    });
+
+    return res.status(200).json(newBlogPost);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+router.get('/new', withAuth, async (req, res) => {
+  console.log('Hit new post route');
+  try {
+    return res
+      .status(200)
+      .render('new-post', { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 // Get a specific post
 router.get('/:id', async (req, res) => {
   try {
@@ -15,7 +53,6 @@ router.get('/:id', async (req, res) => {
 
     // Serialize data so the template can read it
     post = postData.get({ plain: true });
-    console.log(post);
 
     // Fetch comments
     const commentsData = await Comment.findAll({
