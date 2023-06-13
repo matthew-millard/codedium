@@ -1,1 +1,29 @@
-<h1>This is dashboard</h1>
+<main class='main-dashboard'>
+  {{#if blogs}}
+    <h2 class='dashboard-title'>Your Blog Posts</h2>
+    <hr />
+    {{#each blogs}}
+      <div class='dashboard-blog-posts'>
+        <div class=''>
+          <h2>{{this.blog_title}}</h2>
+          <p>{{this.blog_body}}</p>
+          <div class=''>
+            <small>Posted: {{formatDate this.createdAt}}</small>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <h2 class='dashboard-title'>Your Blog Posts</h2>
+    <hr />
+    <div class='dashboard-blog-posts'>
+      <div>
+        <p>You have no blog posts!</p>
+      </div>
+    </div>
+  {{/if}}
+  <div class='new-blog flex'>
+    <a href='/api/posts/new' class='primary-button new-blog-btn'>Create New Blog
+      +</a>
+  </div>
+</main>

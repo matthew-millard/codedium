@@ -1,6 +1,6 @@
 // Imports
 const home = require('express').Router();
-const { BlogPost, User } = require('../models');
+const { BlogPost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 home.get('/', async (req, res) => {
@@ -32,11 +32,45 @@ home.get('/login', async (req, res) => {
 });
 
 // Dashboard Route
-home.get('/dashboard', withAuth, (req, res) => {
+home.get('/dashboard', withAuth, async (req, res) => {
   try {
+    // Collect user id from session
+    const author_id = req.session.user_id;
+    console.log(author_id);
+
+    // Get all blog posts by user id
+    const blogPostData = await BlogPost.findAll({
+      where: { author_id },
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['password'], // Exclude password from user attributes
+          },
+        },
+      ],
+    });
+
+    // Serialize data
+    const blogs = blogPostData.map((blog) => blog.get({ plain: true }));
+
     return res
       .status(200)
-      .render('dashboard', { loggedIn: req.session.loggedIn });
+      .render('dashboard', { blogs, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+// Logout Route
+home.get('/logout', async (req, res) => {
+  try {
+    // Destroy session
+    req.session.destroy();
+
+    // Redirect to homepage
+    return res.status(200).redirect('/');
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Server Error' });

@@ -239,6 +239,28 @@ hr {
   margin: 1rem 0;
 }
 
+/* Dashboard */
+.main-dashboard {
+  margin-top: 150px;
+  margin-bottom: 150px;
+  height: 100%;
+  width: 40%;
+}
+
+.dashboard-blog-posts {
+  padding: 2rem 0;
+}
+
+.new-blog {
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.new-blog-btn {
+  border: 2px solid var(--font-color);
+  border-radius: 100px;
+}
+
 /* Footer */
 .footer {
   position: absolute;
