@@ -18,6 +18,7 @@
   </head>
   <body>
     <div class='page-container flex'>
+      {{!-- Header --}}
       <header class='header flex'>
         <nav class='nav'>
           <h1><span id='code'><span id='less-than'>&lt;</span>code</span><span
@@ -35,7 +36,9 @@
           </ul>
         </nav>
       </header>
+      {{!-- Insert Templates --}}
       {{{body}}}
+      {{!-- Footer --}}
       <footer class='footer flex'>
         <p>&copy; Codedium 2023</p>
       </footer>
