@@ -2,8 +2,23 @@
 const user = require('express').Router();
 const { User } = require('../../models');
 
-// Create a new user
-user.post('/', async (req, res) => {
+// Sign up - Create a new user
+user.post('/sign-up', async (req, res) => {
+  // Collect username and password
+  const { username, password } = req.body;
+
+  // Validation Checks
+  if (!username || username.trim() === '') {
+    return res.status(400).json({ message: 'Username is required' });
+  }
+
+  if (!password || password.length < 8) {
+    return res
+      .status(400)
+      .json({
+        message: 'Password is required and must be at least 8 characters long',
+      });
+  }
   try {
     const userData = await User.create(req.body);
 
@@ -14,7 +29,6 @@ user.post('/', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    console.log('Request body:', req.body);
     return res
       .status(500)
       .json({ message: 'Server Error', error: err.message });
