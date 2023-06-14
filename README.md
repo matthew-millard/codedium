@@ -65,7 +65,9 @@ Launch your browser and enter the URL `http//localhost:3001`
 
 ## Screenshots
 
-![Codedium](./assets/Screenshot_codedium.png)
+![Codedium](./assets/Screenshot_Codedium_01.png)
+![Codedium](./assets/Screenshot_Codedium_02.png)
+![Codedium](./assets/Screenshot_Codedium_03.png)
 
 ## Technologies Used
 
