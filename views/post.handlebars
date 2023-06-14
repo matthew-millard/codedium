@@ -36,11 +36,9 @@
     </div>
   {{/if}}
 
-  <form
-    class='comment-container comment-form flex'
-    data-id={{post.id}}
-  >
+  <form class='comment-container comment-form flex' data-id={{post.id}}>
     <textarea class='comment-textarea' name='comment_body' required></textarea>
+    <div class='error-message-container'></div>
     <button class='primary-button' type='submit'>Leave Comment</button>
   </form>
 </main>

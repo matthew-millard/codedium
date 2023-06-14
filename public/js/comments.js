@@ -1,13 +1,25 @@
 const commentForm = document.querySelector('.comment-form');
 const commentTextarea = commentForm.querySelector('.comment-textarea');
 
+// Show Error Messages Function
+function displayErrorMessage(errorMessage) {
+  const errorMessageContainer = document.querySelector(
+    '.error-message-container'
+  );
+  const errorMessageElement = document.createElement('small');
+
+  errorMessageElement.textContent = errorMessage;
+  errorMessageElement.classList.add('error-message');
+
+  errorMessageContainer.appendChild(errorMessageElement);
+}
+
 // Function to post user's comment
 const commentFormHandler = async (event) => {
   event.preventDefault();
   try {
     // Collect value from textarea
     const newComment = commentTextarea.value.trim();
-    console.log('hi');
 
     // Collect post id from data attribute
     const postId = commentForm.getAttribute('data-id');
@@ -33,7 +45,8 @@ const commentFormHandler = async (event) => {
 
       // If unsuccessful, alert user
       if (response.status === 401) {
-        alert('You must be logged in to comment');
+        displayErrorMessage('You must be logged in to comment');
+        // return document.location.replace('/login')
       }
 
       // If successful, update page to display new comment.
