@@ -1,5 +1,10 @@
 # Codedium
 
+![Github Issues Badge](https://img.shields.io/github/issues/matthew-millard/codedium)
+![License Badge](https://img.shields.io/github/license/matthew-millard/codedium)
+![Contributors Badge](https://img.shields.io/github/contributors/matthew-millard/codedium?color=blue)
+![Last Commit Badge](https://img.shields.io/github/last-commit/matthew-millard/codedium)
+
 ## Description
 
 Codedium is an interactive CMS-style blog platform designed specifically for developers. Think of it as your virtual colloquium, where coders convene to publish, read, and discuss technical concepts, recent advancements, and emerging technologies.
