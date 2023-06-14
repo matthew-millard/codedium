@@ -52,7 +52,7 @@ Launch your browser and enter the URL `http//localhost:3001`
 
 [Github Repository](https://github.com/matthew-millard/codedium)
 
-[Deployed Website](https://codedium.herokuapp.com/login)
+[Deployed Website](https://codedium.herokuapp.com/)
 
 ## Walkthrough Demonstration
 
