@@ -19,11 +19,9 @@ const loginFormHandler = async (event) => {
         body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json' },
       });
-      // If successful, redirect the browser to the homepage
+      // If successful, redirect the browser to the dashboard
       if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        return document.location.replace('/');
+        return document.location.replace('/dashboard');
       } else {
         return alert(response.statusText);
       }
@@ -48,9 +46,9 @@ const signupFormHandler = async (event) => {
         body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json' },
       });
-      // If successful, redirect the browser to the homepage
+      // If successful, redirect the browser to the dashboard
       if (response.ok) {
-        return document.location.replace('/');
+        return document.location.replace('/dashboard');
       } else {
         return alert(response.statusText);
       }
